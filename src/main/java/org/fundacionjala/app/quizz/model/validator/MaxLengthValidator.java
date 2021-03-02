@@ -2,18 +2,15 @@ package org.fundacionjala.app.quizz.model.validator;
 
 import java.util.List;
 
-public class MinLengthValidator implements Validator {
-
-    private static final String ERROR_MESSAGE = "The value length must be less than ";
+public class MaxLengthValidator implements Validator{
+    private static final String ERROR_MESSAGE = "The value length must be more than ";
 
     @Override
     public void validate(String value, String conditionValueString, List<String> errors) {
         try {
             int conditionValue = IntegerParser.parse(conditionValueString);
 
-            if (value.length() < conditionValue) {
-                System.out.println(value.length());
-                System.out.println(conditionValue);
+            if (value.length() > conditionValue) {
                 errors.add(ERROR_MESSAGE + conditionValue);
             }
         } catch (NumberFormatException exception) {
